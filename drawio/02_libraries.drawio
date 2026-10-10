@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="libraries" id="libraries">
+    <mxGraphModel dx="900" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="Three libraries and their important parts" style="text;html=1;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="360" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="la" value="library_A" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="180" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="la1" value="part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lb" value="library_B" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="260" y="70" width="180" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="lb1" value="part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="290" y="110" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lb2" value="part_2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="290" y="165" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc" value="library_C" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="480" y="70" width="280" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc1" value="part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="500" y="110" width="110" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc2" value="part_2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="630" y="110" width="110" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc3" value="part_3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="500" y="165" width="110" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lc4" value="part_4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="630" y="165" width="110" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="green: a library (domain), yellow: an important part of it (subdomain)" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="560" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

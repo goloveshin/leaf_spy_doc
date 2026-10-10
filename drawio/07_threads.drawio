@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="threads" id="threads">
+    <mxGraphModel dx="900" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="450" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="Exceptions across threads" style="text;html=1;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="360" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="w" value="Worker thread" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="300" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1" value="leaf::throw_exception(marks...)&lt;br&gt;slots live on this thread&lt;br&gt;no leaf context is active" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2" value="leaf::try_capture_all(...)&lt;br&gt;copies the slots into a leaf::result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="260" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3" value="throw captured_leaf_exception{ result }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="265" width="260" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c" value="Catching thread" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="440" y="70" width="300" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="try_catch: catch captured_leaf_exception" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="460" y="110" width="260" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="result-&amp;gt;value()&lt;br&gt;loads the slots into the active context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="460" y="185" width="260" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3" value="direct handlers and spy see the marks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="265" width="260" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;" edge="1" parent="1" source="w1" target="w2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;" edge="1" parent="1" source="w2" target="w3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="exception" style="endArrow=classic;html=1;" edge="1" parent="1" source="w" target="c">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;" edge="1" parent="1" source="c1" target="c2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;" edge="1" parent="1" source="c2" target="c3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="without the capture only the exception type arrives, the marks stay on the worker thread" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="350" width="700" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

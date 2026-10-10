@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="case_3" id="case_3">
+    <mxGraphModel dx="900" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="350" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="b" value="function_lib_B_part_2_execute_callback()&lt;br&gt;on_error: library_B + part_2" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="260" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="c" value="callback from function_lib_C_part_1_get_callback()&lt;br&gt;throw: library_C + part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="45" y="80" width="230" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="ex" value="" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="350" y="30" width="190" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="d1" value="library_C (thrown)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="365" y="45" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="library_C::part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="365" y="85" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="library_B (added by on_error)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="365" y="130" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="library_B::part_2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="365" y="170" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="h" value="handler asking for&lt;br&gt;both pairs&lt;br&gt;matches" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="70" width="170" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;" edge="1" parent="1" source="b" target="ex">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;" edge="1" parent="1" source="ex" target="h">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="the exception passed two places in the code, so it has both sets of marks" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="260" width="640" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

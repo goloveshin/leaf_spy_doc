@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="marks" id="marks">
+    <mxGraphModel dx="900" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="A mark is an empty struct that is put into the exception" style="text;html=1;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="460" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="code" value="struct library_A{};&lt;br&gt;struct part_1{};" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fontFamily=Courier New;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="th" value="leaf::throw_exception(&lt;br&gt;&amp;nbsp;&amp;nbsp;library_A{},&lt;br&gt;&amp;nbsp;&amp;nbsp;part_1{},&lt;br&gt;&amp;nbsp;&amp;nbsp;e_what_info{...});" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fontFamily=Courier New;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="260" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ex" value="" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="100" width="320" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="exl" value="exception" style="text;html=1;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="105" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1" value="library_A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="440" y="140" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2" value="part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="590" y="140" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3" value="e_what_info" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="440" y="205" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;" edge="1" parent="1" source="th" target="ex">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1" source="code" target="th">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

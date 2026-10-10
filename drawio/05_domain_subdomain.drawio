@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="domain_subdomain" id="domain_subdomain">
+    <mxGraphModel dx="900" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="Agreement: an exception carries a domain and a subdomain" style="text;html=1;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="460" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="gl" value="correct" style="text;html=1;align=left;fontColor=#2d7600;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="g" value="" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="340" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="g1" value="domain&lt;br&gt;library_C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="55" y="105" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="g2" value="subdomain&lt;br&gt;part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="160" y="105" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="g3" value="e_what_info" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="265" y="105" width="105" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="bl" value="broken" style="text;html=1;align=left;fontColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="120" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="b" value="" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="340" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="b1" value="no domain" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="435" y="105" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="b2" value="subdomain&lt;br&gt;part_1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="540" y="105" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="b3" value="e_what_info" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="645" y="105" width="105" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="nothing in the language checks it, so a mark that is not there goes unnoticed" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="720" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

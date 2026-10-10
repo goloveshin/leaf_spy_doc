@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="case_5" id="case_5">
+    <mxGraphModel dx="900" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="350" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="fn" value="function_lib_C_part_3()&lt;br&gt;throw: library_C + part_3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="dh" value="its own handler&lt;br&gt;wants part_2&lt;br&gt;does not match" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="270" y="40" width="170" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="up" value="the exception goes up&lt;br&gt;with all its marks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="490" y="60" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="mn" value="caller: handler (library_C, part_3)&lt;br&gt;matches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="490" y="180" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;" edge="1" parent="1" source="fn" target="dh">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="no" style="endArrow=classic;html=1;" edge="1" parent="1" source="dh" target="up">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;" edge="1" parent="1" source="up" target="mn">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="the handler did not match by subdomain, so the exception went up" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="285" width="600" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

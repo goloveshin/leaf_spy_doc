@@ -1,0 +1,31 @@
+site_name: leaf_spy
+site_description: A small header-only wrapper around Boost.LEAF that sees any set of types in an exception
+site_url: https://goloveshin.github.io/leaf_spy_doc/
+repo_url: https://github.com/goloveshin/leaf_spy_doc
+edit_uri: edit/main/source/
+copyright: Distributed under the Boost Software License, Version 1.0.
+
+docs_dir: source
+site_dir: site
+
+theme:
+  name: readthedocs
+  navigation_depth: 3
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+
+nav:
+  - The problem and Boost.LEAF: index.md
+  - A typical project: project.md
+  - Catching any set of types: any-set.md
+  - leaf_spy: solution.md
+  - Getting started: getting-started.md
+  - Guide:
+      - The spy handler: spy.md
+      - Direct handlers: handlers.md
+      - Threads: threads.md
+      - Testing: testing.md
+  - Reference: reference.md

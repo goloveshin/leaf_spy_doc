@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="case_6" id="case_6">
+    <mxGraphModel dx="900" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="350" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="fn" value="function_lib_C_part_4()&lt;br&gt;throw: library_C + part_4&lt;br&gt;+ special_data_t" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="30" y="55" width="190" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="dh" value="its own handler&lt;br&gt;(special_data_t)&lt;br&gt;matches and does throw;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="270" y="35" width="190" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="orig" value="the same exception goes up&lt;br&gt;with all its marks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="510" y="55" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="mn" value="caller: handler (library_C, part_4)&lt;br&gt;matches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="510" y="185" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;" edge="1" parent="1" source="fn" target="dh">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;" edge="1" parent="1" source="dh" target="orig">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;" edge="1" parent="1" source="orig" target="mn">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="the handler took a look and decided to pass the exception up" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="285" width="720" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

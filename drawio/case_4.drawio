@@ -1,0 +1,28 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="case_4" id="case_4">
+    <mxGraphModel dx="900" dy="400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="fn" value="function_lib_C_part_2()&lt;br&gt;throw: library_C + part_2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="30" y="70" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="dh" value="its own handler&lt;br&gt;(library_C, part_2)&lt;br&gt;matches" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="290" y="45" width="170" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="res" value="the handler returned:&lt;br&gt;the exception is over" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="520" y="70" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;" edge="1" parent="1" source="fn" target="dh">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;" edge="1" parent="1" source="dh" target="res">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n" value="nothing reaches the caller" style="text;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="190" width="560" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
