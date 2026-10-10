@@ -6,7 +6,7 @@ edit_uri: edit/main/source/
 copyright: Distributed under the Boost Software License, Version 1.0.
 
 docs_dir: source
-site_dir: site
+site_dir: docs
 
 theme:
   name: readthedocs

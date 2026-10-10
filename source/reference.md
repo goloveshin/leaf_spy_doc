@@ -72,6 +72,6 @@ Carries the marks of an exception from the thread that threw to the thread that 
 | item | meaning |
 | --- | --- |
 | `leaf_spy::leaf_spy` | the `INTERFACE` target, C++20, links `Boost::leaf` |
-| `BUILD_TESTS` | `ON` by default. Builds `leaf_spy_tests` |
+| `LEAF_SPY_BUILD_TESTS` | `ON` only when `leaf_spy` is the top-level project. Builds `leaf_spy_tests` and the example |
 
 When `Boost::leaf` is not a target yet, the library fetches `boostorg/leaf` `boost-1.92.0`.

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goloveshin.github.io/leaf_spy_doc/project/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>A typical project - leaf_spy</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "A typical project";
+        var mkdocs_page_input_path = "project.md";
+        var mkdocs_page_url = "/leaf_spy_doc/project/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> leaf_spy
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">The problem and Boost.LEAF</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">A typical project</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#libraries-and-their-parts">Libraries and their parts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#where-does-the-exception-come-from">Where does the exception come from?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domains-subdomains-and-marks">Domains, subdomains and marks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#declare-the-marks-in-one-header">Declare the marks in one header</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-agreement">The agreement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#six-situations">Six situations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#case-1-a-plain-throw">Case 1: a plain throw</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#case-2-a-domain-is-forgotten">Case 2: a domain is forgotten</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#case-3-an-exception-gets-the-marks-of-a-second-domain">Case 3: an exception gets the marks of a second domain</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#case-4-a-library-handles-its-own-exception">Case 4: a library handles its own exception</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#case-5-a-handler-does-not-match">Case 5: a handler does not match</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#case-6-a-handler-looks-and-passes-it-up">Case 6: a handler looks and passes it up</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-we-have-and-what-is-missing">What we have, and what is missing</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../any-set/">Catching any set of types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../solution/">leaf_spy</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../spy/">The spy handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../handlers/">Direct handlers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../threads/">Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reference/">Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">leaf_spy</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">A typical project</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/goloveshin/leaf_spy_doc/edit/main/source/project.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="a-typical-project">A typical project<a class="headerlink" href="#a-typical-project" title="Permanent link">&para;</a></h1>
+<h2 id="libraries-and-their-parts">Libraries and their parts<a class="headerlink" href="#libraries-and-their-parts" title="Permanent link">&para;</a></h2>
+<p>Imagine an ordinary C++ project. It is built from libraries. Every library has a few parts that matter: a module, a layer, a component.</p>
+<p><img alt="Libraries and their parts" src="../images/02_libraries.svg" /></p>
+<p>Here there are three libraries, <code>library_A</code>, <code>library_B</code>, <code>library_C</code>, with one to four parts each.</p>
+<h2 id="where-does-the-exception-come-from">Where does the exception come from?<a class="headerlink" href="#where-does-the-exception-come-from" title="Permanent link">&para;</a></h2>
+<p>Code of one library calls code of another. When something fails deep inside, an exception travels up through all of them and arrives at the top.</p>
+<p><img alt="Where is the exception from" src="../images/03_where_from.svg" /></p>
+<p>By then the type and the text rarely say where it started. We want to know: <strong>which library, which part</strong>.</p>
+<h2 id="domains-subdomains-and-marks">Domains, subdomains and marks<a class="headerlink" href="#domains-subdomains-and-marks" title="Permanent link">&para;</a></h2>
+<p>The answer is to let every throw say where it is from. Two names help to talk about it:</p>
+<ul>
+<li>a <strong>domain</strong> is the library the code belongs to</li>
+<li>a <strong>subdomain</strong> is the part of that library</li>
+</ul>
+<p>and the information itself is a <strong>mark</strong>: an empty struct that you put into the exception. It carries no data. Its type is the information.</p>
+<p><img alt="Marks" src="../images/04_marks.svg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nothing is invented here. A mark is an ordinary Boost.LEAF type that is put into an exception, exactly as in the first of the <a href="../#boostleaf-in-three-ideas">three ideas</a>. "Domain" and "subdomain" are only names for two groups of such types that turn out to be useful for a project made of libraries.</p>
+</div>
+<h3 id="declare-the-marks-in-one-header">Declare the marks in one header<a class="headerlink" href="#declare-the-marks-in-one-header" title="Permanent link">&para;</a></h3>
+<p>Keep every mark in one header, so that the throwing code and the catching code agree:</p>
+<pre><code class="language-cpp">namespace exception
+{
+
+namespace domain
+{
+struct library_A{};
+struct library_B{};
+struct library_C{};
+}// namespace domain
+
+namespace subdomain
+{
+namespace library_A { struct part_1{}; }
+namespace library_B { struct part_1{}; struct part_2{}; }
+namespace library_C { struct part_1{}; struct part_2{}; struct part_3{}; struct part_4{}; }
+}// namespace subdomain
+
+namespace details
+{
+struct special_data_t{};
+}// namespace details
+
+struct e_what_info
+{
+    std::string what;
+};
+
+}// namespace exception
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>group</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain</code></td>
+<td>the library</td>
+</tr>
+<tr>
+<td><code>subdomain</code></td>
+<td>a part of a library</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>clarifying details, anything you need</td>
+</tr>
+<tr>
+<td><code>e_*</code> structs</td>
+<td>payloads with data, such as a text or a path</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-agreement">The agreement<a class="headerlink" href="#the-agreement" title="Permanent link">&para;</a></h3>
+<p>We add one rule:</p>
+<blockquote>
+<p>An exception must contain a domain and a subdomain.</p>
+</blockquote>
+<p><img alt="The agreement" src="../images/05_domain_subdomain.svg" /></p>
+<p>It is only an agreement. Nothing in C++ or LEAF checks it. Keep it in mind, because the next cases show where it gets lost.</p>
+<h2 id="six-situations">Six situations<a class="headerlink" href="#six-situations" title="Permanent link">&para;</a></h2>
+<p>All six use only Boost.LEAF. The functions are code of the three libraries. The top of the program calls them under <code>leaf::try_catch</code>.</p>
+<h3 id="case-1-a-plain-throw">Case 1: a plain throw<a class="headerlink" href="#case-1-a-plain-throw" title="Permanent link">&para;</a></h3>
+<p>A function of <code>library_A</code> throws with its domain, its subdomain and a text:</p>
+<pre><code class="language-cpp">void function_lib_A_part_1()
+{
+    leaf::throw_exception(
+        exception::domain::library_A{},
+        exception::subdomain::library_A::part_1{},
+        exception::e_what_info{ &quot;library_A, part_1&quot; }
+    );
+}
+</code></pre>
+<p>The caller handles it with a handler that asks for those types:</p>
+<pre><code class="language-cpp">leaf::try_catch(
+    []{ function_lib_A_part_1(); },
+    [](
+        const exception::domain::library_A&amp;,
+        const exception::subdomain::library_A::part_1&amp;,
+        const exception::e_what_info&amp; info
+    )
+    {
+        std::cout &lt;&lt; &quot;caught in library_A, part_1: &quot; &lt;&lt; info.what &lt;&lt; '\n';
+    }
+);
+</code></pre>
+<p><img alt="Case 1" src="../images/case_1.svg" /></p>
+<pre><code class="language-text">caught in library_A, part_1: library_A, part_1
+</code></pre>
+<h3 id="case-2-a-domain-is-forgotten">Case 2: a domain is forgotten<a class="headerlink" href="#case-2-a-domain-is-forgotten" title="Permanent link">&para;</a></h3>
+<p>A function of <code>library_B</code> forgets the domain:</p>
+<pre><code class="language-cpp">void function_lib_B_part_1_miss_domain()
+{
+    leaf::throw_exception(
+        exception::subdomain::library_B::part_1{},
+        exception::e_what_info{ &quot;library_B, part_1&quot; }
+    );
+}
+</code></pre>
+<p>A handler that asks for the domain and the subdomain of <code>library_B</code> does not match:</p>
+<pre><code class="language-cpp">try
+{
+    leaf::try_catch(
+        []{ function_lib_B_part_1_miss_domain(); },
+        [](const exception::domain::library_B&amp;, const exception::subdomain::library_B::part_1&amp;)
+        {
+            std::cout &lt;&lt; &quot;caught in library_B, part_1\n&quot;;
+        }
+    );
+}
+catch (const std::exception&amp;)
+{
+    std::cout &lt;&lt; &quot;nobody handled it, and nobody said why\n&quot;;
+}
+</code></pre>
+<p><img alt="Case 2" src="../images/case_2.svg" /></p>
+<pre><code class="language-text">nobody handled it, and nobody said why
+</code></pre>
+<p>The agreement is broken, and no one noticed. The exception just flew past every handler. This is the first thing that we will want to fix.</p>
+<h3 id="case-3-an-exception-gets-the-marks-of-a-second-domain">Case 3: an exception gets the marks of a second domain<a class="headerlink" href="#case-3-an-exception-gets-the-marks-of-a-second-domain" title="Permanent link">&para;</a></h3>
+<p>A function of <code>library_B</code> calls a callback that comes from <code>library_C</code>. It adds its own marks with <code>leaf::on_error</code>:</p>
+<pre><code class="language-cpp">void function_lib_B_part_2_execute_callback(std::function&lt;void()&gt; callback)
+{
+    // attach the domain and subdomain of the place that called the callback
+    auto load = leaf::on_error(
+        exception::domain::library_B{},
+        exception::subdomain::library_B::part_2{}
+    );
+
+    callback();
+}
+</code></pre>
+<p>The callback comes from <code>library_C</code> and throws with its own marks:</p>
+<pre><code class="language-cpp">std::function&lt;void()&gt; function_lib_C_part_1_get_callback()
+{
+    return []
+    {
+        leaf::throw_exception(
+            exception::domain::library_C{},
+            exception::subdomain::library_C::part_1{},
+            exception::e_what_info{ &quot;callback from library_C, part_1&quot; }
+        );
+    };
+}
+</code></pre>
+<p>The exception passes through two places, and carries the marks of both:</p>
+<pre><code class="language-cpp">leaf::try_catch(
+    []
+    {
+        function_lib_B_part_2_execute_callback(function_lib_C_part_1_get_callback());
+    },
+    [](
+        const exception::domain::library_B&amp;,
+        const exception::subdomain::library_B::part_2&amp;,
+        const exception::domain::library_C&amp;,
+        const exception::subdomain::library_C::part_1&amp;
+    )
+    {
+        std::cout &lt;&lt; &quot;caught: library_C, part_1 called from library_B, part_2\n&quot;;
+    }
+);
+</code></pre>
+<p><img alt="Case 3" src="../images/case_3.svg" /></p>
+<pre><code class="language-text">caught: library_C, part_1 called from library_B, part_2
+</code></pre>
+<p>So the exception tells not only where it started, but also who called.</p>
+<h3 id="case-4-a-library-handles-its-own-exception">Case 4: a library handles its own exception<a class="headerlink" href="#case-4-a-library-handles-its-own-exception" title="Permanent link">&para;</a></h3>
+<p>A function of <code>library_C</code> catches its own exception inside:</p>
+<pre><code class="language-cpp">void function_lib_C_part_2()
+{
+    leaf::try_catch(
+        []
+        {
+            leaf::throw_exception(
+                exception::domain::library_C{},
+                exception::subdomain::library_C::part_2{},
+                exception::e_what_info{ &quot;library_C, part_2&quot; }
+            );
+        },
+        [](const exception::domain::library_C&amp;, const exception::subdomain::library_C::part_2&amp;)
+        {
+            std::cout &lt;&lt; &quot;handled inside library_C, part_2\n&quot;;
+        }
+    );
+}
+</code></pre>
+<p><img alt="Case 4" src="../images/case_4.svg" /></p>
+<pre><code class="language-text">handled inside library_C, part_2
+</code></pre>
+<p>The handler returned, and the exception is over. Nothing reaches the caller.</p>
+<h3 id="case-5-a-handler-does-not-match">Case 5: a handler does not match<a class="headerlink" href="#case-5-a-handler-does-not-match" title="Permanent link">&para;</a></h3>
+<p>The same shape, but the handler asks for <code>part_2</code> while the exception has <code>part_3</code>:</p>
+<pre><code class="language-cpp">void function_lib_C_part_3()
+{
+    leaf::try_catch(
+        []
+        {
+            leaf::throw_exception(
+                exception::domain::library_C{},
+                exception::subdomain::library_C::part_3{},
+                exception::e_what_info{ &quot;library_C, part_3&quot; }
+            );
+        },
+        // asks for part_2, but the exception has part_3
+        [](const exception::domain::library_C&amp;, const exception::subdomain::library_C::part_2&amp;)
+        {
+            std::cout &lt;&lt; &quot;handled inside library_C, part_3\n&quot;;
+        }
+    );
+}
+</code></pre>
+<p>The handler does not match, so the exception goes up with all its marks. The caller handles it:</p>
+<pre><code class="language-cpp">leaf::try_catch(
+    []{ function_lib_C_part_3(); },
+    [](const exception::domain::library_C&amp;, const exception::subdomain::library_C::part_3&amp;)
+    {
+        std::cout &lt;&lt; &quot;main: caught library_C, part_3\n&quot;;
+    }
+);
+</code></pre>
+<p><img alt="Case 5" src="../images/case_5.svg" /></p>
+<pre><code class="language-text">main: caught library_C, part_3
+</code></pre>
+<h3 id="case-6-a-handler-looks-and-passes-it-up">Case 6: a handler looks and passes it up<a class="headerlink" href="#case-6-a-handler-looks-and-passes-it-up" title="Permanent link">&para;</a></h3>
+<p>A handler matches, does something, and rethrows with <code>throw;</code>:</p>
+<pre><code class="language-cpp">void function_lib_C_part_4()
+{
+    leaf::try_catch(
+        []
+        {
+            leaf::throw_exception(
+                exception::domain::library_C{},
+                exception::subdomain::library_C::part_4{},
+                exception::details::special_data_t{},
+                exception::e_what_info{ &quot;library_C, part_4&quot; }
+            );
+        },
+        [](const exception::details::special_data_t&amp;)
+        {
+            std::cout &lt;&lt; &quot;inner handler: special data, pass it up\n&quot;;
+            throw;
+        }
+    );
+}
+</code></pre>
+<p>The caller still sees all the marks:</p>
+<pre><code class="language-cpp">leaf::try_catch(
+    []{ function_lib_C_part_4(); },
+    [](const exception::domain::library_C&amp;, const exception::subdomain::library_C::part_4&amp;)
+    {
+        std::cout &lt;&lt; &quot;main: caught library_C, part_4\n&quot;;
+    }
+);
+</code></pre>
+<p><img alt="Case 6" src="../images/case_6.svg" /></p>
+<pre><code class="language-text">inner handler: special data, pass it up
+main: caught library_C, part_4
+</code></pre>
+<h2 id="what-we-have-and-what-is-missing">What we have, and what is missing<a class="headerlink" href="#what-we-have-and-what-is-missing" title="Permanent link">&para;</a></h2>
+<p>With Boost.LEAF alone we can mark the exceptions of a project, add marks on the way up, handle by marks, and pass an exception on.</p>
+<p>Case 2 showed what is missing: nobody noticed that a mark was not there. The next page is about that: <a href="../any-set/">Catching any set of types</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="The problem and Boost.LEAF"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../any-set/" class="btn btn-neutral float-right" title="Catching any set of types">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Distributed under the Boost Software License, Version 1.0.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/goloveshin/leaf_spy_doc" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../any-set/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

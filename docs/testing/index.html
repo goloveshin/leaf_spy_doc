@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goloveshin.github.io/leaf_spy_doc/testing/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Testing - leaf_spy</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Testing";
+        var mkdocs_page_input_path = "testing.md";
+        var mkdocs_page_url = "/leaf_spy_doc/testing/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> leaf_spy
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">The problem and Boost.LEAF</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../project/">A typical project</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../any-set/">Catching any set of types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../solution/">leaf_spy</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../spy/">The spy handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../handlers/">Direct handlers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../threads/">Threads</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Testing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#a-recording-spy">A recording spy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-helper-for-the-arguments">A helper for the arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-test">A test</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-the-library-tests-cover">What the library tests cover</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../reference/">Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">leaf_spy</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guide</li>
+      <li class="breadcrumb-item active">Testing</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/goloveshin/leaf_spy_doc/edit/main/source/testing.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h1>
+<p>Two things are worth testing: that your code throws the right marks, and that handlers react as you expect. Both use <code>try_catch</code> with a small spy that records what it saw.</p>
+<p>The unit tests of the library use <a href="https://github.com/doctest/doctest">doctest</a>, but nothing here depends on it.</p>
+<h2 id="a-recording-spy">A recording spy<a class="headerlink" href="#a-recording-spy" title="Permanent link">&para;</a></h2>
+<pre><code class="language-cpp">struct mark_a { int value = 0; };
+struct mark_b { int value = 0; };
+
+// a type the exception never has: a handler for it never matches
+struct bottom_skip_t{};
+
+struct seen_marks_t
+{
+    bool saw_a = false;
+    int a = 0;
+};
+
+struct bind_t
+{
+    seen_marks_t* marks = nullptr;
+
+    void operator()(const mark_a*, const mark_b*) const
+    {
+    }
+
+    template &lt;typename Context&gt;
+    void visit(Context&amp; ctx, const leaf::error_id id, std::exception*) const
+    {
+        if (const auto* a = ctx.template get&lt;mark_a&gt;(id))
+        {
+            marks-&gt;saw_a = true;
+            marks-&gt;a = a-&gt;value;
+        }
+    }
+};
+</code></pre>
+<h2 id="a-helper-for-the-arguments">A helper for the arguments<a class="headerlink" href="#a-helper-for-the-arguments" title="Permanent link">&para;</a></h2>
+<pre><code class="language-cpp">leaf_spy_args_t make_args(
+    const leaf_spy_args_t::job_that_may_throw_ft&amp; job,
+    const bool is_throw_out
+)
+{
+    return leaf_spy_args_t{
+        .job_that_may_throw = job,
+        .notify_that_job_executed_with_throw = on_throw,
+        .notify_that_job_executed_without_throw = on_ok,
+        .is_throw_out = is_throw_out
+    };
+}
+</code></pre>
+<p><code>on_throw</code> and <code>on_ok</code> are <code>const</code> empty functions of the matching types. They must outlive the call, because the arguments hold references.</p>
+<h2 id="a-test">A test<a class="headerlink" href="#a-test" title="Permanent link">&para;</a></h2>
+<pre><code class="language-cpp">TEST_CASE(&quot;is_throw_out false swallows when no direct handler matches&quot;)
+{
+    seen_marks_t marks;
+
+    const leaf_spy_args_t::job_that_may_throw_ft job = []
+    {
+        leaf::throw_exception(std::runtime_error(&quot;job&quot;), mark_a{ 11 }, mark_b{ 22 });
+    };
+
+    CHECK_NOTHROW((try_catch(
+        make_args(job, false),
+        bind_t{ &amp;marks },
+        [](const bottom_skip_t&amp;){}
+    )));
+
+    CHECK(marks.saw_a);
+    CHECK(marks.a == 11);
+}
+</code></pre>
+<p>Wrap the call in an extra pair of parentheses inside <code>CHECK_NOTHROW</code> and <code>CHECK_THROWS</code>. The macro would otherwise split it at the commas.</p>
+<h2 id="what-the-library-tests-cover">What the library tests cover<a class="headerlink" href="#what-the-library-tests-cover" title="Permanent link">&para;</a></h2>
+<p>The tests in <code>tests/test_leaf_spy.cpp</code> cover each row of the table in <a href="../handlers/">Direct handlers</a>:</p>
+<ul>
+<li>no handler matches, with <code>is_throw_out</code> true and false</li>
+<li>a handler returns</li>
+<li>a handler does <code>throw;</code></li>
+<li>a handler throws <code>std::runtime_error</code>, with <code>is_throw_out</code> true and false</li>
+<li>two levels of <code>try_catch</code>, where the upper one catches what the lower one rethrew</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../threads/" class="btn btn-neutral float-left" title="Threads"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../reference/" class="btn btn-neutral float-right" title="Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Distributed under the Boost Software License, Version 1.0.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/goloveshin/leaf_spy_doc" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../threads/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

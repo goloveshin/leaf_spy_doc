@@ -9,26 +9,27 @@ The library is header-only. The only target is the `INTERFACE` library `leaf_spy
 
 ## CMake
 
-With a local copy of the folder:
+The library lives at [github.com/goloveshin/leaf_spy](https://github.com/goloveshin/leaf_spy). Fetch it with `FetchContent`:
 
 ```cmake
 include(FetchContent)
 
 FetchContent_Declare(
     leaf_spy
-    SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/third_party/leaf_spy_library
+    GIT_REPOSITORY https://github.com/goloveshin/leaf_spy.git
+    GIT_TAG main
 )
 FetchContent_MakeAvailable(leaf_spy)
 
 target_link_libraries(my_app PRIVATE leaf_spy::leaf_spy)
 ```
 
-With a git repository, replace `SOURCE_DIR` with `GIT_REPOSITORY <url>` and `GIT_TAG <tag>`.
+Replace `main` with a release tag to pin a version. To use a local copy instead, replace `GIT_REPOSITORY` and `GIT_TAG` with `SOURCE_DIR <path>`.
 
-The library has an option `BUILD_TESTS`, `ON` by default. It builds the unit tests of the library. Set it to `OFF` before `FetchContent_MakeAvailable` if your project does not need them:
+The library has an option `LEAF_SPY_BUILD_TESTS`. It builds the unit tests and the example of the library. It is `ON` only when `leaf_spy` is the top-level project, so a project that uses the library does not build them. You can set it yourself before `FetchContent_MakeAvailable`:
 
 ```cmake
-set(BUILD_TESTS OFF)
+set(LEAF_SPY_BUILD_TESTS OFF)
 ```
 
 ## The first program

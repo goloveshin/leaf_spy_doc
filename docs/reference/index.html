@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goloveshin.github.io/leaf_spy_doc/reference/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Reference - leaf_spy</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reference";
+        var mkdocs_page_input_path = "reference.md";
+        var mkdocs_page_url = "/leaf_spy_doc/reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> leaf_spy
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">The problem and Boost.LEAF</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../project/">A typical project</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../any-set/">Catching any set of types</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../solution/">leaf_spy</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../spy/">The spy handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../handlers/">Direct handlers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../threads/">Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#try_catch">try_catch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#leaf_spy_args_t">leaf_spy_args_t</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#spyhandlerconcept">SpyHandlerConcept</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#captured_leaf_exception">captured_leaf_exception</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cmake">CMake</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">leaf_spy</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reference</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/goloveshin/leaf_spy_doc/edit/main/source/reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h1>
+<p>Header: <code>leaf_spy.hpp</code>. Namespace: <code>leaf_spy</code>.</p>
+<h2 id="try_catch">try_catch<a class="headerlink" href="#try_catch" title="Permanent link">&para;</a></h2>
+<pre><code class="language-cpp">template &lt;typename SpyHandler, typename ... DirectHandlers&gt;
+void try_catch(
+    const leaf_spy_args_t&amp; args,
+    SpyHandler&amp;&amp; spy_handler,
+    DirectHandlers&amp;&amp; ... direct_handlers
+);
+</code></pre>
+<p>Runs <code>args.job_that_may_throw()</code> inside a leaf context. If the job throws:</p>
+<ol>
+<li><code>args.notify_that_job_executed_with_throw()</code> is called.</li>
+<li>The direct handlers try first.</li>
+<li>If none matched, <code>spy_handler.visit(...)</code> is called.</li>
+<li>Whether anything leaves depends on the outcome and on <code>args.is_throw_out</code>. See <a href="../handlers/">Direct handlers</a>.</li>
+</ol>
+<p>If the job does not throw, <code>args.notify_that_job_executed_without_throw()</code> is called.</p>
+<p>A <code>captured_leaf_exception</code> thrown by the job is unpacked first, so its marks reach the handlers. See <a href="../threads/">Threads</a>.</p>
+<h2 id="leaf_spy_args_t">leaf_spy_args_t<a class="headerlink" href="#leaf_spy_args_t" title="Permanent link">&para;</a></h2>
+<p>An aggregate. Initialise it with designated initialisers.</p>
+<table>
+<thead>
+<tr>
+<th>member</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>job_that_may_throw</code></td>
+<td><code>const std::function&lt;void ()&gt;&amp;</code></td>
+<td>the work that may throw</td>
+</tr>
+<tr>
+<td><code>notify_that_job_executed_with_throw</code></td>
+<td><code>const std::function&lt;void ()&gt;&amp;</code></td>
+<td>called if the job threw</td>
+</tr>
+<tr>
+<td><code>notify_that_job_executed_without_throw</code></td>
+<td><code>const std::function&lt;void ()&gt;&amp;</code></td>
+<td>called if the job did not throw</td>
+</tr>
+<tr>
+<td><code>is_throw_out</code></td>
+<td><code>const bool</code>, default <code>true</code></td>
+<td>let an exception leave <code>try_catch</code></td>
+</tr>
+</tbody>
+</table>
+<p>The first three are references. The functions they refer to must outlive the call. A lambda passed inline lives until the end of the full expression, which is enough.</p>
+<h2 id="spyhandlerconcept">SpyHandlerConcept<a class="headerlink" href="#spyhandlerconcept" title="Permanent link">&para;</a></h2>
+<pre><code class="language-cpp">template &lt;typename SpyHandler, typename Context&gt;
+concept SpyHandlerConcept;
+</code></pre>
+<p>A spy handler satisfies the concept when:</p>
+<ul>
+<li>every parameter of its <code>operator()</code> is a pointer, and</li>
+<li><code>spy_handler.visit(ctx, id, exception)</code> is a valid call, with <code>ctx</code> of the context type, <code>id</code> a <code>leaf::error_id</code> and <code>exception</code> a <code>std::exception*</code>.</li>
+</ul>
+<p><code>try_catch</code> checks it with <code>static_assert</code>. See <a href="../spy/">The spy handler</a>.</p>
+<h2 id="captured_leaf_exception">captured_leaf_exception<a class="headerlink" href="#captured_leaf_exception" title="Permanent link">&para;</a></h2>
+<p>Header: <code>captured_leaf_exception.hpp</code>.</p>
+<pre><code class="language-cpp">struct captured_leaf_exception : std::exception
+{
+    std::shared_ptr&lt;leaf::result&lt;void&gt;&gt; result;
+
+    explicit captured_leaf_exception(leaf::result&lt;void&gt; result);
+    const char* what() const noexcept override;
+};
+</code></pre>
+<p>Carries the marks of an exception from the thread that threw to the thread that catches. <code>what()</code> returns <code>"captured leaf exception"</code>. See <a href="../threads/">Threads</a>.</p>
+<h2 id="cmake">CMake<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>leaf_spy::leaf_spy</code></td>
+<td>the <code>INTERFACE</code> target, C++20, links <code>Boost::leaf</code></td>
+</tr>
+<tr>
+<td><code>LEAF_SPY_BUILD_TESTS</code></td>
+<td><code>ON</code> only when <code>leaf_spy</code> is the top-level project. Builds <code>leaf_spy_tests</code> and the example</td>
+</tr>
+</tbody>
+</table>
+<p>When <code>Boost::leaf</code> is not a target yet, the library fetches <code>boostorg/leaf</code> <code>boost-1.92.0</code>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../testing/" class="btn btn-neutral float-left" title="Testing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Distributed under the Boost Software License, Version 1.0.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/goloveshin/leaf_spy_doc" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../testing/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
